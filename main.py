@@ -29,7 +29,29 @@ class Calculator:
         self.grid.setSpacing(10)
 
         self.addAllNumbers()
+        self.addActions()
         self.addEqualsAction()
+
+    def addActions(self):
+        def plusAction():
+            self.memory = self.num
+            self.num = 0
+            self.action = '+'
+            print('plus')
+
+        def minusAction():
+            self.memory = self.num
+            self.num = 0
+            self.action = '-'
+            print('minus')
+
+        plus = qtw.QPushButton("+")
+        self.grid.addWidget(plus, 3, 3)
+        plus.clicked.connect(plusAction)
+
+        minus = qtw.QPushButton("-")
+        self.grid.addWidget(minus, 2, 3)
+        minus.clicked.connect(minusAction)
 
     def addEqualsAction(self):
         def equals():
